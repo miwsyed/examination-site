@@ -1,0 +1,112 @@
+*{
+	padding:0;
+	margin: 0;
+	font-family: sans-serif;
+	color: white;
+	text-decoration: none;
+}
+
+nav{
+	width: 100%;
+	height: 15vh;
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+	position: absolute;
+}
+
+.logo a{
+	font-size: 1.6rem;
+	font-weight: bold;
+	text-transform: uppercase;
+
+}
+
+.menu ul li
+{
+	list-style: none;
+	display: inline-block;
+	padding: 0 15px;
+}
+
+.active, ul li:hover{
+   border-top: 2px solid #5dade2;
+   border-bottom:2px solid #5dade2;
+}
+
+.team-section{
+	overflow: hidden;
+	text-align: center;
+	background-color: #21D4FD;
+background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+padding: 120px;
+
+}
+img{
+	height: 200px;
+	width: 200px;
+}
+
+.team-section h1{
+	text-transform: uppercase;
+	color: white;
+	margin-bottom: 40px;
+	font-size: 40px;
+}
+
+.border{
+	display: block;
+	margin: auto;
+	width: 160px;
+	height: 5px;
+	background-color: #FFFFFF;
+background-image: linear-gradient(180deg, #FFFFFF 0%, #6284FF 50%, #FF0000 100%);
+margin-bottom: 20px;
+margin-top: 10px;
+
+
+}
+
+.ps{
+	margin-bottom: 40px;
+}
+
+.ps a{
+	display: inline-block;
+	margin: 0 30px;
+	width: 160px;
+	height: 160px;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.ps a img{
+	width: 100%;
+	filter: grayscale(100%);
+	transition: 0.4s all;
+}
+
+.ps a:hover > img{
+	filter: none;
+}
+
+.section{
+	width: 600px;
+	margin: auto;
+	font-size: 20px;
+	color: white;
+	text-align: justify;
+	height: 0;
+	overflow: hidden;
+
+}
+.section:target{
+	height: auto;
+}
+.name{
+	display: block;
+	margin-bottom: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 22px;
+}

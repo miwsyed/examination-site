@@ -1,0 +1,128 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fefefe;
+  font-family: sans-serif;
+}
+
+.container1 {
+  width: 100%;
+  margin: 90px 50px 50px 50px;
+}
+.heading {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.card1 {
+  width: 45%;
+  height: 37rem;
+  /* background: rgb(245, 245, 245); */
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+  transition: 0.3s;
+  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+}
+
+.card-body1 {
+  margin-top: 30px;
+  padding: 30px 20px;
+  font-size: 18px;
+}
+
+.card1:hover {
+  transform: none;
+  color: black;
+}
+
+@media screen and (max-width: 1000px) {
+  .card1 {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .container1 {
+    width: 100%;
+  }
+
+  .heading {
+    padding: 20px;
+    font-size: 20px;
+  }
+
+  .card1 {
+    width: 80%;
+  }
+}
+
+form {
+  margin: 0px 30px 10px;
+  padding: 0px;
+}
+input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+button[type="submit"],
+input[type="submit"] {
+  background: #181b2b;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 40px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 10px;
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: #2c3e50;
+}
+
+label {
+  color: black !important;
+
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+p {
+  color: red;
+  margin: 0px;
+  padding: 0px;
+}
+
+p::before {
+  display: none;
+  font-size: 1px;
+  margin: 0px;
+  padding: 0px;
+}

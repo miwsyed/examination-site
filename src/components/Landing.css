@@ -1,0 +1,11 @@
+.Landing {
+  background-image: url("../assets/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  max-width: 100%;
+}
+.grid {
+  filter: none;
+}
