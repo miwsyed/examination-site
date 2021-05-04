@@ -50,42 +50,41 @@ const SetQuestions = () => {
                   )}
                 </div>
 
-                <div className="wrapper">
-                  <label>Option 1</label>
+                <div className="option">
+                  <label style={{ fontSize: "15px" }}>A</label>
 
-                  <div className="option">
-                    <input
-                      type="text"
-                      className="mcqOptions"
-                      id="option1"
-                      {...register("option1", {
-                        required: true,
-                        minLength: 4,
-                        maxLength: 40,
-                      })}
-                    />
-                    <input
-                      type="checkbox"
-                      id="vehicle1"
-                      name="vehicle1"
-                      value="Bike"
-                    />
+                  <input
+                    type="text"
+                    className="mcqOptions"
+                    id="option1"
+                    {...register("option1", {
+                      required: true,
+                      minLength: 4,
+                      maxLength: 40,
+                    })}
+                  />
+                  <input
+                    type="checkbox"
+                    id="vehicle1"
+                    name="vehicle1"
+                    value="Bike"
+                  />
 
-                    {errors?.option1?.type === "required" && (
-                      <p style={{ margin: "0px", padding: "0px" }}>
-                        This field is required
-                      </p>
-                    )}
-                    {errors?.option1?.type === "maxLength" && (
-                      <p style={{ margin: "0px", padding: "0px" }}>
-                        Exam name cannot exceed 20 characters
-                      </p>
-                    )}
-                  </div>
+                  {errors?.option1?.type === "required" && (
+                    <p style={{ margin: "0px", padding: "0px" }}>
+                      This field is required
+                    </p>
+                  )}
+                  {errors?.option1?.type === "maxLength" && (
+                    <p style={{ margin: "0px", padding: "0px" }}>
+                      Exam name cannot exceed 20 characters
+                    </p>
+                  )}
                 </div>
 
-                <div>
-                  <label>Option 2</label>
+                <div className="option">
+                  <label style={{ fontSize: "15px" }}>B</label>
+
                   <input
                     className="mcqOptions"
                     id="option2"
@@ -95,6 +94,12 @@ const SetQuestions = () => {
                       minLength: 4,
                       maxLength: 40,
                     })}
+                  />
+                  <input
+                    type="checkbox"
+                    id="vehicle1"
+                    name="vehicle1"
+                    value="Bike"
                   />
                   {errors?.option2?.type === "required" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
@@ -108,8 +113,9 @@ const SetQuestions = () => {
                   )}
                 </div>
 
-                <div>
-                  <label>Option 3</label>
+                <div className="option">
+                  <label style={{ fontSize: "15px" }}>C</label>
+
                   <input
                     className="mcqOptions"
                     id="option3"
@@ -119,6 +125,12 @@ const SetQuestions = () => {
                       minLength: 4,
                       maxLength: 40,
                     })}
+                  />
+                  <input
+                    type="checkbox"
+                    id="vehicle1"
+                    name="vehicle1"
+                    value="Bike"
                   />
 
                   {errors?.option3?.type === "required" && (
@@ -132,8 +144,9 @@ const SetQuestions = () => {
                     </p>
                   )}
                 </div>
-                <div>
-                  <label>Option 4</label>
+
+                <div className="option">
+                  <label style={{ fontSize: "15px" }}>D</label>
                   <input
                     className="mcqOptions"
                     id="option4"
@@ -143,6 +156,12 @@ const SetQuestions = () => {
                       minLength: 4,
                       maxLength: 40,
                     })}
+                  />
+                  <input
+                    type="checkbox"
+                    id="vehicle1"
+                    name="vehicle1"
+                    value="Bike"
                   />
                   {errors?.option4?.type === "required" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
@@ -156,9 +175,9 @@ const SetQuestions = () => {
                   )}
                 </div>
 
-                <input className="next" type="button" value="next" />
+                <input className="next" type="submit" value="next" />
 
-                <input type="submit" />
+                <input type="button" value="Save" />
               </form>
             </div>
           </div>

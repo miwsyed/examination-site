@@ -30,7 +30,7 @@ body {
   flex-direction: column;
 
   width: 45%;
-  height: 52rem;
+  height: 49rem;
   padding-bottom: 10px;
   background: rgb(245, 245, 245);
   background-color: white;
@@ -144,7 +144,7 @@ span {
 }
 
 input[type="text"] {
-  width: 90%;
+  width: 80%;
 }
 input[type="checkbox"] {
   display: flex;
@@ -153,12 +153,14 @@ input[type="checkbox"] {
   width: 5%;
   float: right;
 }
-.wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto; /* the bottom margin is the negative value of the footer's height */
-}
+
 .option {
-  display: inline;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+label {
+  display: flex;
+  flex-direction: row-reverse;
 }
