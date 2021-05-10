@@ -9,7 +9,7 @@ import { notifyAdded } from "../components/iziNotify";
 
 const SetQuestions = () => {
   let history = useHistory();
-  const [Questionn, setQuestionn] = useState({
+  const [mcq, setmcq] = useState({
     question: "",
     optionA: "",
     optionB: "",
@@ -30,20 +30,23 @@ const SetQuestions = () => {
     Bid,
     Cid,
     Did,
-  } = Questionn;
+  } = mcq;
 
   const onInputChange = (e) => {
-    setQuestionn({ ...Questionn, [e.target.name]: e.target.value });
+    setmcq({ ...mcq, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = useCallback(async (e) => {
-    await axios.post("http://localhost:3003/questions", Questionn);
-    notifyAdded();
-    // setTimeout(function () {
-    //   window.location.reload(false);
-    // }, 1000);
-    console.log(Questionn);
-  }, []);
+  const onSubmit = useCallback(
+    async (e) => {
+      await axios.post("http://localhost:3003/questions", mcq);
+      notifyAdded();
+      // setTimeout(function () {
+      //   window.location.reload(false);
+      // }, 1000);
+      console.log(mcq);
+    },
+    [mcq]
+  );
 
   useEffect(() => {
     $("input:checkbox").on("click", function () {
