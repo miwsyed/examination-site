@@ -16,9 +16,7 @@ import { notify } from "../iziNotify";
 const Navbar = () => {
   const classes = useStyles();
   const onSignOut = useCallback(() => {
-    {
-      notify();
-    }
+    notify();
   }, []);
 
   return (
@@ -49,9 +47,9 @@ const Navbar = () => {
           </NavbarText>
           <div className={classes.grow} />
           Sign Out
-          <div className={classes.button}>
+          <div onClick={onSignOut} className={classes.button}>
             <IconButton aria-label="Show cart items" color="inherit">
-              <Badge onClick={onSignOut} color="secondary">
+              <Badge color="secondary">
                 <ExitToAppRoundedIcon />
               </Badge>
             </IconButton>

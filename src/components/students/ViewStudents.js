@@ -1,0 +1,39 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+
+const ViewStudents = () => {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    loadUser();
+  }, [user]);
+
+  const loadUser = async () => {
+    const result = await axios.get(`http://localhost:3003/users/${id}`);
+    setUser(result.data);
+  };
+
+  return (
+    <div className="container shadow-lg py-4">
+      <Link className="btn btn-primary" to="/vieweditstudents">
+        back
+      </Link>
+      <hr />
+      <ul className="list-group w-50">
+        <li className="list-group-item">Student Name: {user.name}</li>
+        <li className="list-group-item">Student email: {user.email}</li>
+        <li className="list-group-item">Student Password: {user.password}</li>
+      </ul>
+    </div>
+  );
+};
+
+export default ViewStudents;

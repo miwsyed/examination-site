@@ -1,10 +1,64 @@
-import React from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import "./SetQuestions.css";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import Grid from "@material-ui/core/Grid";
+import $ from "jquery";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+
+import { notifyAdded } from "../components/iziNotify";
 
 const SetQuestions = () => {
+  let history = useHistory();
+  const [Questionn, setQuestionn] = useState({
+    question: "",
+    optionA: "",
+    optionB: "",
+    optionC: "",
+    optionD: "",
+    Aid: "",
+    Bid: "",
+    Cid: "",
+    Did: "",
+  });
+  const {
+    question,
+    optionA,
+    optionB,
+    optionC,
+    optionD,
+    Aid,
+    Bid,
+    Cid,
+    Did,
+  } = Questionn;
+
+  const onInputChange = (e) => {
+    setQuestionn({ ...Questionn, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = useCallback(async (e) => {
+    await axios.post("http://localhost:3003/questions", Questionn);
+    notifyAdded();
+    // setTimeout(function () {
+    //   window.location.reload(false);
+    // }, 1000);
+    console.log(Questionn);
+  }, []);
+
+  useEffect(() => {
+    $("input:checkbox").on("click", function () {
+      var $box = $(this);
+      if ($box.is(":checked")) {
+        var group = "input:checkbox[name='" + $box.attr("name") + "']";
+
+        $(group).prop("checked", false);
+        $box.prop("checked", true);
+      } else {
+        $box.prop("checked", false);
+      }
+    });
+  }, []);
+
   const count = 3;
   const {
     register,
@@ -13,9 +67,7 @@ const SetQuestions = () => {
   } = useForm({
     mode: "onChange",
   });
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+
   return (
     <div>
       <div className="container2">
@@ -25,25 +77,27 @@ const SetQuestions = () => {
               <form
                 method="post"
                 name="myform"
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit((e) => onSubmit(e))}
               >
                 <div style={{ marginBottom: "10px" }}>
-                  <span>Questions set : {0}</span>
+                  <span>Questions set : {count}</span>
                   <label>Question</label>
                   <input
-                    id="question"
-                    {...register("setQuestion", {
+                    name="question"
+                    value={question}
+                    {...register("question", {
                       required: true,
                       minLength: 10,
                       maxLength: 150,
                     })}
+                    onChange={(e) => onInputChange(e)}
                   />
-                  {errors?.setQuestion?.type === "required" && (
+                  {errors?.question?.type === "required" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
                       This field is required
                     </p>
                   )}
-                  {errors?.setQuestion?.type === "maxLength" && (
+                  {errors?.question?.type === "maxLength" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
                       Question name cannot exceed 150 characters
                     </p>
@@ -56,28 +110,32 @@ const SetQuestions = () => {
                   <input
                     type="text"
                     className="mcqOptions"
-                    id="option1"
-                    {...register("option1", {
+                    name="optionA"
+                    value={optionA}
+                    {...register("optionA", {
                       required: true,
                       minLength: 4,
-                      maxLength: 40,
+                      maxLength: 60,
                     })}
+                    onChange={(e) => onInputChange(e)}
                   />
                   <input
                     type="checkbox"
-                    id="vehicle1"
-                    name="vehicle1"
-                    value="Bike"
+                    className="radio"
+                    id="Aid"
+                    name="checky"
+                    value={Aid}
+                    onChange={(e) => onInputChange(e)}
                   />
 
-                  {errors?.option1?.type === "required" && (
+                  {errors?.optionA?.type === "required" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
                       This field is required
                     </p>
                   )}
-                  {errors?.option1?.type === "maxLength" && (
+                  {errors?.optionA?.type === "maxLength" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
-                      Exam name cannot exceed 20 characters
+                      Answer cannot exceeed 60 characters
                     </p>
                   )}
                 </div>
@@ -87,28 +145,32 @@ const SetQuestions = () => {
 
                   <input
                     className="mcqOptions"
-                    id="option2"
+                    value={optionB}
+                    name="optionB"
                     type="text"
-                    {...register("option2", {
+                    {...register("optionB", {
                       required: true,
                       minLength: 4,
-                      maxLength: 40,
+                      maxLength: 60,
                     })}
+                    onChange={(e) => onInputChange(e)}
                   />
                   <input
                     type="checkbox"
-                    id="vehicle1"
-                    name="vehicle1"
-                    value="Bike"
+                    className="radio"
+                    id="Bid"
+                    name="checky"
+                    value={Bid}
+                    onChange={(e) => onInputChange(e)}
                   />
-                  {errors?.option2?.type === "required" && (
+                  {errors?.optionB?.type === "required" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
                       This field is required
                     </p>
                   )}
-                  {errors?.option2?.type === "maxLength" && (
+                  {errors?.optionB?.type === "maxLength" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
-                      Exam name cannot exceed 20 characters
+                      Answer cannot exceeed 60 characters
                     </p>
                   )}
                 </div>
@@ -118,29 +180,33 @@ const SetQuestions = () => {
 
                   <input
                     className="mcqOptions"
-                    id="option3"
+                    name="optionC"
+                    value={optionC}
                     type="text"
-                    {...register("option3", {
+                    {...register("optionC", {
                       required: true,
                       minLength: 4,
-                      maxLength: 40,
+                      maxLength: 60,
                     })}
+                    onChange={(e) => onInputChange(e)}
                   />
                   <input
                     type="checkbox"
-                    id="vehicle1"
-                    name="vehicle1"
-                    value="Bike"
+                    className="radio"
+                    id="Cid"
+                    name="checky"
+                    value={Cid}
+                    onChange={(e) => onInputChange(e)}
                   />
 
-                  {errors?.option3?.type === "required" && (
+                  {errors?.optionC?.type === "required" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
                       This field is required
                     </p>
                   )}
-                  {errors?.option3?.type === "maxLength" && (
+                  {errors?.optionC?.type === "maxLength" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
-                      Exam name cannot exceed 20 characters
+                      Answer cannot exceeed 60 characters
                     </p>
                   )}
                 </div>
@@ -149,28 +215,32 @@ const SetQuestions = () => {
                   <label style={{ fontSize: "15px" }}>D</label>
                   <input
                     className="mcqOptions"
-                    id="option4"
+                    name="optionD"
+                    value={optionD}
                     type="text"
-                    {...register("option4", {
+                    {...register("optionD", {
                       required: true,
                       minLength: 4,
-                      maxLength: 40,
+                      maxLength: 60,
                     })}
+                    onChange={(e) => onInputChange(e)}
                   />
                   <input
                     type="checkbox"
-                    id="vehicle1"
-                    name="vehicle1"
-                    value="Bike"
+                    className="radio"
+                    id="Did"
+                    name="checky"
+                    value={Did}
+                    onChange={(e) => onInputChange(e)}
                   />
-                  {errors?.option4?.type === "required" && (
+                  {errors?.optionD?.type === "required" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
                       This field is required
                     </p>
                   )}
-                  {errors?.option4?.type === "maxLength" && (
+                  {errors?.optionD?.type === "maxLength" && (
                     <p style={{ margin: "0px", padding: "0px" }}>
-                      Exam name cannot exceed 20 characters
+                      Answer cannot exceeed 60 characters
                     </p>
                   )}
                 </div>

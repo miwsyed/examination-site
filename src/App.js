@@ -7,8 +7,11 @@ import CreateExam from "./components/CreateExam";
 import SetQuestions from "./components/SetQuestions";
 import Landing from "./components/Landing";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import ViewEditStudents from "./components/ViewEditStudents";
+import ViewEditStudents from "./components/pages/ViewEditStudents";
 import NotFound from "./components/pages/NotFound";
+import AddStudents from "./components/students/AddStudents";
+import EditStudents from "./components/students/EditStudents";
+import ViewStudents from "./components/students/ViewStudents";
 
 const App = () => {
   return (
@@ -33,6 +36,18 @@ const App = () => {
         <Route exact path="/vieweditstudents">
           <Navbar />
           <ViewEditStudents />
+        </Route>
+        <Route exact path="/addstudents">
+          <Navbar />
+          <AddStudents />
+        </Route>
+        <Route exact path="/editstudents/:id">
+          <Navbar />
+          <EditStudents />
+        </Route>
+        <Route exact path="/viewstudents/:id">
+          <Navbar />
+          <ViewStudents />
         </Route>
         <Route component={NotFound} />
       </Switch>

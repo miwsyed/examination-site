@@ -14,3 +14,18 @@ export const notify = () =>
     message: "Logged off.",
     position: "topCenter",
   });
+export const notifyAdded = () =>
+  iziToast.success({
+    title: "Success",
+    message: "Student Added Successfully",
+    position: "topRight",
+    timeout: 1000,
+  });
+
+export const notifyUpdated = () =>
+  iziToast.success({
+    title: "Success",
+    message: "Student details Updated",
+    position: "topRight",
+    timeout: 2000,
+  });
