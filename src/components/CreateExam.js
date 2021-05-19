@@ -3,12 +3,26 @@ import "./CreateExams.css";
 // import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { notify } from "./iziNotify";
+
+const initialState = {
+  examName: "",
+  examTime: "",
+  examDate: "",
+};
 
 const SetQuestions = () => {
   const history = useHistory();
 
-  const onSubmit = (data) => {
-    history.push("/setQuestions");
+  const onSubmit = async (formData) => {
+    await axios.post("http://localhost:3003/exams", formData);
+    notify();
+    setTimeout(function () {
+      history.push("/setquestions");
+    }, 2000);
+
+    // do whatever you need here, at this stage the form is validated
   };
 
   const {
@@ -17,6 +31,7 @@ const SetQuestions = () => {
     handleSubmit,
   } = useForm({
     mode: "onChange",
+    defaultValues: initialState,
   });
 
   return (
@@ -34,8 +49,8 @@ const SetQuestions = () => {
                 <input
                   {...register("examName", {
                     required: true,
-                    minLength: 10,
-                    maxLength: 20,
+                    minLength: 3,
+                    maxLength: 40,
                   })}
                 />
                 {errors?.examName?.type === "required" && (
@@ -47,8 +62,7 @@ const SetQuestions = () => {
                 <label>Exam Time</label>
                 <input
                   type="time"
-                  id="examTime"
-                  name="examTime"
+                  defaultValue=""
                   min="09:00"
                   max="18:00"
                   {...register("examTime", { required: true })}

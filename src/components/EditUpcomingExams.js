@@ -1,21 +1,27 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-const ViewEditStudents = () => {
-  const [users, setUser] = useState([]);
+const EditUpcomingExams = () => {
+  const { id } = useParams();
+
+  const [questions, setQuestions] = useState([]);
+  const [exam, setExam] = useState([]);
 
   useEffect(() => {
     loadUsers();
   }, []);
 
-  const loadUsers = useCallback(async () => {
-    const result = await axios.get("http://localhost:3003/users");
-    setUser(result.data);
-  }, []);
+  const loadUsers = async () => {
+    const resultQuestion = await axios.get(`http://localhost:3003/questions`);
+    const resultExam = await axios.get(`http://localhost:3003/exams/${id}`);
+
+    setQuestions(resultQuestion.data);
+    setExam(resultExam.data);
+  };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:3003/users/${id}`);
+    await axios.delete(`http://localhost:3003/questions/${id}`);
     loadUsers();
   };
 
@@ -24,39 +30,35 @@ const ViewEditStudents = () => {
       <div className="py-4">
         <Link
           className="btn btn-outline-primary float-right mb-5"
-          to="/addstudents"
+          to="/setquestions"
         >
-          Add Student
+          Add Question
         </Link>
-
-        <table class="table border shadow">
-          <thead class="thead-light">
+        <div className="container shadow w-25">Exam Name : {exam.examName}</div>
+        <table className="table border shadow">
+          <thead className="thead-light">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Student Name</th>
-              <th scope="col">Email Id</th>
-              <th scope="col">Password</th>
+              <th scope="col">Q.No</th>
+              <th scope="col">Question</th>
+
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
+            {questions.map((user, index) => (
               <tr>
                 <th scope="row">{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.password}</td>
-
+                <td>{user.question}</td>
                 <td>
                   <Link
                     className="btn btn-primary mr-2"
-                    to={`/viewstudents/${user.id}`}
+                    to={`/viewquestion/${user.id}`}
                   >
                     View
                   </Link>
                   <Link
                     className="btn btn-outline-primary mr-2"
-                    to={`/editstudents/${user.id}`}
+                    to={`/editquestion/${user.id}`}
                   >
                     Edit
                   </Link>
@@ -76,4 +78,4 @@ const ViewEditStudents = () => {
   );
 };
 
-export default ViewEditStudents;
+export default EditUpcomingExams;

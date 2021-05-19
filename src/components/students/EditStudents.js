@@ -30,7 +30,6 @@ const EditStudents = () => {
     },
     [user]
   );
-  const finish = () => {};
 
   useEffect(() => {
     loadUser();

@@ -5,6 +5,7 @@ import AdminPage from "./components/AdminPage";
 import Navbar from "./components/Navbar/Navbar";
 import CreateExam from "./components/CreateExam";
 import SetQuestions from "./components/SetQuestions";
+import ViewQuestion from "./components/ViewQuestion";
 import Landing from "./components/Landing";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import ViewEditStudents from "./components/pages/ViewEditStudents";
@@ -12,6 +13,10 @@ import NotFound from "./components/pages/NotFound";
 import AddStudents from "./components/students/AddStudents";
 import EditStudents from "./components/students/EditStudents";
 import ViewStudents from "./components/students/ViewStudents";
+import UpcomingExaminations from "./components/UpcomingExaminations";
+import ViewUpcomingExams from "./components/ViewUpcomingExams";
+import EditUpcomingExams from "./components/EditUpcomingExams";
+import EditQuestion from "./components/EditQuestion";
 
 const App = () => {
   return (
@@ -49,6 +54,27 @@ const App = () => {
           <Navbar />
           <ViewStudents />
         </Route>
+        <Route exact path="/upcomingexaminations">
+          <Navbar />
+          <UpcomingExaminations />
+        </Route>
+        <Route exact path="/viewupcomingexams/:id">
+          <Navbar />
+          <ViewUpcomingExams />
+        </Route>
+        <Route exact path="/editupcomingexams/:id">
+          <Navbar />
+          <EditUpcomingExams />
+        </Route>
+        <Route exact path="/viewquestion/:id">
+          <Navbar />
+          <ViewQuestion />
+        </Route>
+        <Route exact path="/editquestion/:id">
+          <Navbar />
+          <EditQuestion />
+        </Route>
+
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

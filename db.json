@@ -1,30 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Leanne Graham",
-      "username": "Bret",
-      "email": "Sincere@april.biz",
-      "address": {
-        "street": "Kulas Light",
-        "suite": "Apt. 556",
-        "city": "Gwenborough",
-        "zipcode": "92998-3874",
-        "geo": {
-          "lat": "-37.3159",
-          "lng": "81.1496"
-        }
-      },
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "company": {
-        "name": "Romaguera-Crona",
-        "catchPhrase": "Multi-layered client-server neural-net",
-        "bs": "harness real-time e-markets"
-      },
-      "password": "mukki1212"
-    },
-    {
       "id": 3,
       "name": "Clementine Bauch Beti",
       "username": "Samantha",
@@ -50,7 +26,7 @@
     },
     {
       "id": 4,
-      "name": "Patricia Lebsack",
+      "name": "Patricia Lebsacks",
       "username": "Karianne",
       "email": "Julianne.OConner@kory.org",
       "address": {
@@ -225,76 +201,84 @@
   ],
   "Questions": [
     {
-      "id": 1,
-      "Questions": "Leanne Graham",
-      "A": "Bret",
-      "B": "Sincere@april.biz",
-      "C": "1-770-736-8031 x56442",
-      "D": "hildegard.org",
-      "Aid": "0",
-      "Bid": "0",
-      "Cid": "1",
-      "Did": "0"
+      "question": "What is the actual name of Babu Bhai?",
+      "optionA": "Babu Rao Ganpat Laal",
+      "answerOption": "optionD",
+      "optionB": "Babu Reshamya",
+      "optionC": "Babli Sir",
+      "optionD": "Babu Rao Ganpat Rao Waapte",
+      "id": 1
     },
     {
-      "id": 2,
-      "Questions": "Leanne Graham",
-      "A": "Bret",
-      "B": "Sincere@april.biz",
-      "C": "1-770-736-8031 x56442",
-      "D": "hildegard.org",
-      "Aid": "0",
-      "Bid": "0",
-      "Cid": "1",
-      "Did": "0"
-    },
-    {
-      "question": "",
-      "optionA": "",
-      "optionB": "",
-      "optionC": "",
-      "optionD": "",
-      "Aid": "",
-      "Bid": "",
-      "Cid": "",
-      "Did": "",
+      "question": "checkingthe Question",
+      "optionA": "whatthe maN?",
+      "answerOption": "optionA",
+      "optionB": "nottheash",
+      "optionC": "kasjkdaku",
+      "optionD": "bbaslaaas",
       "id": 3
     },
     {
-      "question": "what you know is not the truth",
-      "optionA": "maybe",
-      "optionB": "yessir",
-      "optionC": "nosir",
-      "optionD": "byesir",
-      "Aid": "",
-      "Bid": "",
-      "Cid": "",
-      "Did": "",
+      "question": "Who sold you kidneys?",
+      "optionA": "idkwho",
+      "optionB": "wedkwho",
+      "optionC": "theydkwho",
+      "optionD": "ikwho",
+      "answerOption": "optionA",
       "id": 4
     },
     {
-      "question": "",
-      "optionA": "",
-      "optionB": "",
-      "optionC": "",
-      "optionD": "",
-      "Aid": "",
-      "Bid": "",
-      "Cid": "",
-      "Did": "",
-      "id": 5
+      "question": "Who was the first person to land on moon?",
+      "optionA": "Michael Jackson",
+      "optionB": "Ismail Raja",
+      "optionC": "Neil Arm Strong",
+      "optionD": "Babu Bhai",
+      "answerOption": "optionC",
+      "id": 6
     },
     {
-      "question": "all you need to know about ",
-      "optionA": "mukesh ",
-      "optionB": "sirtile",
-      "optionC": "notitle",
-      "optionD": "yestitle",
-      "Aid": "",
-      "Bid": "",
-      "Cid": "",
-      "Did": "",
-      "id": 6
+      "question": "Who is your favourite Rapper?",
+      "optionA": "Eminem",
+      "optionB": "2 PAC",
+      "optionC": "Eazy",
+      "optionD": "50 Cent",
+      "answerOption": "optionA",
+      "id": 7
+    },
+    {
+      "question": "What is your Pet's name?",
+      "optionA": "Caty Cat",
+      "optionB": "tiger",
+      "optionC": "Monty",
+      "optionD": "Miny",
+      "answerOption": "optionA",
+      "id": 8
+    },
+    {
+      "question": "Why do you think you are a good fit ?",
+      "optionA": "I really don't know",
+      "optionB": "I am sad ",
+      "optionC": "I just wanna make a lot of money",
+      "optionD": "Don't know where we at",
+      "answerOption": "optionA",
+      "id": 9
+    },
+    {
+      "question": "How many bones are there in human body?",
+      "optionA": "0202",
+      "optionB": "0206",
+      "optionC": "0207",
+      "optionD": "0208",
+      "answerOption": "optionA",
+      "id": 10
+    }
+  ],
+  "exams": [
+    {
+      "examName": "CA1 INT305",
+      "examTime": "14:03",
+      "examDate": "2023-03-03",
+      "id": 1
     }
   ]
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -14,12 +14,12 @@ const ViewStudents = () => {
 
   useEffect(() => {
     loadUser();
-  }, [user]);
+  }, []);
 
-  const loadUser = async () => {
+  const loadUser = useCallback(async () => {
     const result = await axios.get(`http://localhost:3003/users/${id}`);
     setUser(result.data);
-  };
+  }, [user]);
 
   return (
     <div className="container shadow-lg py-4">
@@ -36,4 +36,4 @@ const ViewStudents = () => {
   );
 };
 
-export default ViewStudents;
+export default memo(ViewStudents);

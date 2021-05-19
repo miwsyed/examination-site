@@ -1,9 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import "./ExamPaper.css";
+import { notify2 } from "./iziNotify";
 
 const ExamsetPaper = () => {
+  const history = useHistory();
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  const loadUsers = async () => {
+    const resultExam = await axios.get(`http://localhost:3003/exams`);
+
+    window.totalQuestion = Object.keys(resultExam.data).length;
+    console.log(window.totalQuestion);
+  };
+
+  const gotoExam = () => {
+    if (window.totalQuestion === 0) {
+      history.push("/createexam");
+    } else {
+      notify2();
+    }
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -14,7 +36,7 @@ const ExamsetPaper = () => {
             <Link
               className="btn"
               style={{ textDecoration: "none", color: "white" }}
-              to="/createExam"
+              onClick={gotoExam}
             >
               Set Exam
             </Link>
@@ -39,7 +61,7 @@ const ExamsetPaper = () => {
             <Link
               className="btn"
               style={{ textDecoration: "none", color: "white" }}
-              to="/user/physicsques"
+              to="/upcomingexaminations"
             >
               View
             </Link>

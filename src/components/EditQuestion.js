@@ -1,25 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "../components/SetQuestions.css";
-import { notifyAddedQuestion } from "./iziNotify";
-
-// I am not sure what count is, so I keep it here
-
-// This is initial form state that will be used by useForm() hook,
-// see defaultValues
-const initialState = {
-  question: "",
-  optionA: "",
-  optionB: "",
-  optionC: "",
-  optionD: "",
-  answerOption: "",
-};
-
-const SetQuestions = () => {
+import { notifyAddedQuestion, notifyUpdatedQuestion } from "./iziNotify";
+const EditQuestion = () => {
+  const initialState = {
+    question: "",
+    optionA: "",
+    optionB: "",
+    optionC: "",
+    optionD: "",
+    answerOption: "",
+  };
+  const { id } = useParams();
   const history = useHistory();
+
+  const [questionn, setQuestionn] = useState(initialState);
 
   useEffect(() => {
     loadUser();
@@ -31,31 +28,36 @@ const SetQuestions = () => {
     handleSubmit,
   } = useForm({
     mode: "onChange",
-    defaultValues: initialState,
+    defaultValues: {},
   });
 
-  const onSubmit = async (formData) => {
-    await axios.post("http://localhost:3003/questions", formData);
-    notifyAddedQuestion();
-    setTimeout(function () {
-      window.location.reload(false);
-    }, 2000);
-
-    // do whatever you need here, at this stage the form is validated
-  };
+  const onSubmit = useCallback(
+    async (formData) => {
+      setQuestionn(questionn);
+      await axios.put(`http://localhost:3003/questions/${id}`, formData);
+      notifyUpdatedQuestion();
+      setTimeout(function () {
+        history.push("/editupcomingexams/1");
+      }, 3000);
+    },
+    [questionn, id, history]
+  );
 
   const loadUser = async () => {
+    const questionData = await axios.get(
+      `http://localhost:3003/questions/${id}`
+    );
     const totalQuestions = await axios.get(`http://localhost:3003/questions`);
     const Exam = await axios.get(`http://localhost:3003/exams`);
 
+    setQuestionn(questionData.data);
     window.currentExamName = Exam.data[0].examName;
     window.totalQuestion = Object.keys(totalQuestions.data).length;
   };
 
   const done = () => {
-    history.push("/");
+    history.push("/editupcomingexams/1");
   };
-
   return (
     <div>
       <div className="container shadow-lg w-50">
@@ -85,7 +87,7 @@ const SetQuestions = () => {
                   <label style={{ float: "left" }}>Question</label>
                   <input
                     type="text"
-                    defaultValue=""
+                    defaultValue={questionn.question}
                     style={{ width: "100%" }}
                     {...register("question", {
                       required: true,
@@ -115,7 +117,7 @@ const SetQuestions = () => {
 
                   <input
                     type="text"
-                    defaultValue=""
+                    defaultValue={questionn.optionA}
                     className="mcqOptions"
                     // register name matches your state object
                     {...register("optionA", {
@@ -151,7 +153,7 @@ const SetQuestions = () => {
 
                   <input
                     type="text"
-                    defaultValue=""
+                    defaultValue={questionn.optionB}
                     className="mcqOptions"
                     // register name matches your state object
                     {...register("optionB", {
@@ -186,7 +188,7 @@ const SetQuestions = () => {
 
                   <input
                     type="text"
-                    defaultValue=""
+                    defaultValue={questionn.optionC}
                     className="mcqOptions"
                     // register name matches your state object
                     {...register("optionC", {
@@ -221,7 +223,7 @@ const SetQuestions = () => {
                   <label style={{ fontSize: "15px" }}>D</label>
                   <input
                     type="text"
-                    defaultValue=""
+                    defaultValue={questionn.optionD}
                     className="mcqOptions"
                     // register name matches your state object
                     {...register("optionD", {
@@ -257,9 +259,9 @@ const SetQuestions = () => {
                   </p>
                 )}
 
-                <input className="next" type="submit" value="next" />
+                <input className="next" type="submit" value="Update" />
 
-                <input onClick={done} type="button" value="Save" />
+                <input onClick={done} type="button" value="Back" />
               </form>
             </div>
           </div>
@@ -269,4 +271,4 @@ const SetQuestions = () => {
   );
 };
 
-export default SetQuestions;
+export default EditQuestion;
