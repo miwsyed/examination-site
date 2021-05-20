@@ -11,12 +11,12 @@ import { Link } from "react-router-dom";
 import { NavbarText } from "reactstrap";
 import logo from "../../assets/logo.png";
 import useStyles from "./styles";
-import { notify } from "../iziNotify";
+import { notifyLogOut } from "../iziNotify";
 
 const Navbar = () => {
   const classes = useStyles();
   const onSignOut = useCallback(() => {
-    notify();
+    notifyLogOut();
   }, []);
 
   return (
@@ -41,7 +41,7 @@ const Navbar = () => {
                   height="25px"
                   className={classes.image}
                 />
-                Online Entrance Exam
+                Online Examination System
               </Typography>
             </Link>
           </NavbarText>

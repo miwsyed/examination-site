@@ -8,6 +8,14 @@ export const notify2 = () =>
     position: "topCenter",
   });
 
+export const notifyLogOut = () =>
+  iziToast.info({
+    title: "Success",
+    message: "Logged Out Successfully",
+    position: "topRight",
+    timeout: 2000,
+  });
+
 export const notify = () =>
   iziToast.info({
     title: "Success",
