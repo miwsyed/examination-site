@@ -52,7 +52,7 @@ const EditQuestion = () => {
     if (examData) {
       // exam data is defined
       return (
-        <div>
+        <div className="container-xs  w-50 p-3">
           <div>Exam Name : {examData.currentExamName}</div>
           <div>Total Questions : {examData.totalQuestions}</div>
         </div>
