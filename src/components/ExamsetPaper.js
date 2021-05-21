@@ -1,25 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 import "./ExamPaper.css";
 import { notify2 } from "./iziNotify";
 
 const ExamsetPaper = () => {
+  const { id } = useParams();
+  const [examData, setExamData] = useState(null);
+
   const history = useHistory();
+
   useEffect(() => {
+    const loadUsers = async () => {
+      const totalExams = await axios.get(`http://localhost:3003/exams/${id}`);
+
+      setExamData({
+        totalQuestions: Object.keys(totalExams.data).length,
+      });
+    };
+
     loadUsers();
   }, []);
 
-  const loadUsers = async () => {
-    const resultExam = await axios.get(`http://localhost:3003/exams`);
-
-    window.totalQuestion = Object.keys(resultExam.data).length;
-    console.log(window.totalQuestion);
-  };
-
   const gotoExam = () => {
-    if (window.totalQuestion === 0) {
+    if (examData.totalQuestions === 0) {
       history.push("/createexam");
     } else {
       notify2();
