@@ -1,6 +1,13 @@
 import "izitoast/dist/css/iziToast.min.css";
 const iziToast = require("izitoast");
 
+export const notifyLoginSuccess = () =>
+  iziToast.success({
+    title: "",
+    message: "Login Successful.",
+    position: "topRight",
+  });
+
 export const notify2 = () =>
   iziToast.info({
     title: "",

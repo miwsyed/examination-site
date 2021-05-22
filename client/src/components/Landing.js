@@ -1,46 +1,40 @@
-import { Grid, Paper } from "@material-ui/core";
 import React from "react";
-// import { notify2 } from "./iziNotify.js";
-import { paperStyle } from "./extraStyling.js";
-// import { useHistory } from "react-router-dom";
+import "./CreateExams.css";
 import { useForm } from "react-hook-form";
+import { notifyLoginSuccess } from "./iziNotify";
+import { Grid, Paper } from "@material-ui/core";
+import { paperStyle } from "./extraStyling.js";
 import "./Landing.css";
+import { useHistory } from "react-router";
 
 const Landing = () => {
+  const history = useHistory();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm({
     mode: "onChange",
+    defaultValues: {},
   });
 
-  // const history = useHistory();
-
-  const onSubmit = () => {
-    // if (values.player1 !== values.player2) {
-    //   setPlayers({ player1: values.player1, player2: values.player2 });
-    //   history.push('/game');
-    // }
-    // else {
-    //   { notify2(); }
-    //   history.push('/');
-    // }
+  const onSubmit = (formData) => {
+    notifyLoginSuccess();
+    setTimeout(function () {
+      history.push("/admin");
+    }, 2000);
+    console.log(formData);
   };
 
   return (
     <div className="Landing">
-      <Grid className="grid">
+      <Grid className=" container grid">
         <Paper elevation={10} style={paperStyle}>
           <Grid align="center">
-            <h4>Online Exam Nepal</h4> <br />
+            <h4>Online Examination System Nepal</h4> <br />
             <h6>Enter your login credentials</h6>
           </Grid>
-          <form
-            method="post"
-            name="myformLanding"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form method="post" name="myform" onSubmit={handleSubmit(onSubmit)}>
             <label>Email</label>
             <input
               type="email"

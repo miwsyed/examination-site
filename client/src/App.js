@@ -22,11 +22,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/login">
+        <Route exact path="/">
           <Landing />
         </Route>
 
-        <Route exact path="/">
+        <Route exact path="/admin">
           <Navbar />
           <AdminPage />
         </Route>
