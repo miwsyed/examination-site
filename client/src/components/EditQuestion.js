@@ -13,7 +13,7 @@ const EditQuestion = () => {
 
   const callAdminPage = async () => {
     try {
-      const res = await fetch("/servereditquestions/:id", {
+      const res = await fetch("/servereditquestion/:id", {
         method: "GET",
         headers: {
           Accept: "application/json",

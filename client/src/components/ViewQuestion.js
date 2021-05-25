@@ -40,9 +40,7 @@ const ViewQuestion = () => {
   }, []);
 
   const loadUser = useCallback(async () => {
-    const result = await axios.get(
-      `http://localhost:5000/api/database/questions/${id}`
-    );
+    const result = await axios.get(`http://localhost:3003/questions/${id}`);
     setQuestion(result.data);
   }, [question]);
 

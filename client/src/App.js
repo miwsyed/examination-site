@@ -18,6 +18,8 @@ import ViewUpcomingExams from "./components/ViewUpcomingExams";
 import EditUpcomingExams from "./components/EditUpcomingExams";
 import EditQuestion from "./components/EditQuestion";
 import Logout from "./components/Logout";
+import ViewStudentExam from "./components/StudentPanel/ViewStudentExam";
+import ViewStudentProfile from "./components/StudentPanel/ViewStudentProfile";
 
 const App = () => {
   return (
@@ -79,7 +81,14 @@ const App = () => {
           <Navbar />
           <Logout />
         </Route>
-
+        <Route exact path="/viewstudentexam">
+          <Navbar />
+          <ViewStudentExam />
+        </Route>
+        <Route exact path="/viewstudentprofile">
+          <Navbar />
+          <ViewStudentProfile />
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

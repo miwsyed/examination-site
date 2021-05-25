@@ -11,7 +11,7 @@ const EditStudents = () => {
 
   const callAdminPage = async () => {
     try {
-      const res = await fetch("/servereditstudents", {
+      const res = await fetch("/servereditstudents/:id", {
         method: "GET",
         headers: {
           Accept: "application/json",
