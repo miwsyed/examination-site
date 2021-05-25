@@ -5,8 +5,34 @@ import { useHistory, useParams } from "react-router-dom";
 import { notifyUpdated } from "../iziNotify";
 
 const EditStudents = () => {
-  let history = useHistory();
   const { id } = useParams();
+
+  const history = useHistory();
+
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/servereditstudents", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAdminPage();
+  }, []);
 
   const [user, setUser] = useState({
     name: "",

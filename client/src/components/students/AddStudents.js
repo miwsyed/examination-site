@@ -1,11 +1,37 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import { notifyAdded } from "../iziNotify";
 
 const AddUser = () => {
-  let history = useHistory();
+  const history = useHistory();
+
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/serveraddstudents", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAdminPage();
+  }, []);
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -21,6 +47,8 @@ const AddUser = () => {
     async (e) => {
       e.preventDefault();
       await axios.post("http://localhost:3003/users", user);
+      await axios.post("/register", user);
+
       notifyAdded();
       setTimeout(function () {
         window.location.reload(false);

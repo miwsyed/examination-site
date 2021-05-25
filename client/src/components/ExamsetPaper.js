@@ -6,14 +6,13 @@ import "./ExamPaper.css";
 import { notify2 } from "./iziNotify";
 
 const ExamsetPaper = () => {
-  const { id } = useParams();
-  const [examData, setExamData] = useState(null);
+  const [examData, setExamData] = useState(0);
 
   const history = useHistory();
 
   useEffect(() => {
     const loadUsers = async () => {
-      const totalExams = await axios.get(`http://localhost:3003/exams/${id}`);
+      const totalExams = await axios.get(`http://localhost:3003/exams`);
 
       setExamData({
         totalQuestions: Object.keys(totalExams.data).length,
@@ -22,7 +21,6 @@ const ExamsetPaper = () => {
 
     loadUsers();
   }, []);
-
   const gotoExam = () => {
     if (examData.totalQuestions === 0) {
       history.push("/createexam");

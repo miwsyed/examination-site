@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 3,
-      "name": "Clementine Bauch Beti",
+      "name": "Clementine Bauch Betiss",
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
       "address": {
@@ -145,58 +145,22 @@
       "password": "nukki221"
     },
     {
-      "id": 9,
-      "name": "Glenna Reichert",
-      "username": "Delphine",
-      "email": "Chaim_McDermott@dana.io",
-      "address": {
-        "street": "Dayna Park",
-        "suite": "Suite 449",
-        "city": "Bartholomebury",
-        "zipcode": "76495-3109",
-        "geo": {
-          "lat": "24.6463",
-          "lng": "-168.8889"
-        }
-      },
-      "phone": "(775)976-6794 x41206",
-      "website": "conrad.com",
-      "company": {
-        "name": "Yost and Sons",
-        "catchPhrase": "Switchable contextually-based project",
-        "bs": "aggregate real-time technologies"
-      },
-      "password": "babu"
-    },
-    {
-      "id": 10,
-      "name": "Clementina DuBuque",
-      "username": "Moriah.Stanton",
-      "email": "Rey.Padberg@karina.biz",
-      "address": {
-        "street": "Kattie Turnpike",
-        "suite": "Suite 198",
-        "city": "Lebsackbury",
-        "zipcode": "31428-2261",
-        "geo": {
-          "lat": "-38.2386",
-          "lng": "57.2232"
-        }
-      },
-      "phone": "024-648-3804",
-      "website": "ambrose.net",
-      "company": {
-        "name": "Hoeger LLC",
-        "catchPhrase": "Centralized empowering task-force",
-        "bs": "target end-to-end models"
-      },
-      "password": "babusir"
-    },
-    {
       "name": "Mukesh",
       "email": "Mukesh@gmail.com",
       "password": "babubhai",
       "id": 11
+    },
+    {
+      "name": "bahadur Shah",
+      "email": "Bahadur@gmail.com",
+      "password": "teribv",
+      "id": 12
+    },
+    {
+      "name": "Student A",
+      "email": "studenta@gmail.com",
+      "password": "studenta",
+      "id": 13
     }
   ],
   "Questions": [
@@ -206,7 +170,7 @@
       "answerOption": "optionD",
       "optionB": "Babu Reshamya",
       "optionC": "Babli Sir",
-      "optionD": "Babu Rao Ganpat Rao Waapte",
+      "optionD": "Babu Rao Ganpat Rao Waaptay",
       "id": 1
     },
     {
@@ -271,6 +235,21 @@
       "optionD": "0208",
       "answerOption": "optionA",
       "id": 10
+    },
+    {
+      "question": "Laraib ki bv karti hai Mustafa se pyaar",
+      "optionA": "true",
+      "answerOption": "optionC",
+      "optionB": "false",
+      "optionC": "strong true",
+      "optionD": "strong false",
+      "id": 11
+    },
+    {
+      "name": "TeriBv",
+      "email": "terbv@gmail.com",
+      "password": "termeri",
+      "id": 12
     }
   ],
   "exams": [

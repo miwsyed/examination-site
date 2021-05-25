@@ -1,22 +1,46 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 const ViewEditStudents = () => {
   const [users, setUser] = useState([]);
+  const history = useHistory();
+
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/servervieweditstudents", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
 
   useEffect(() => {
-    loadUsers();
-  }, []);
+    callAdminPage();
 
-  const loadUsers = useCallback(async () => {
-    const result = await axios.get("http://localhost:3003/users");
-    setUser(result.data);
+    const loadUsers = async () => {
+      const result = await axios.get("http://localhost:3003/users");
+      setUser(result.data);
+    };
+
+    loadUsers();
   }, []);
 
   const deleteUser = async (id) => {
+    console.log(id);
     await axios.delete(`http://localhost:3003/users/${id}`);
-    loadUsers();
   };
 
   return (
@@ -29,8 +53,8 @@ const ViewEditStudents = () => {
           Add Student
         </Link>
 
-        <table class="table border shadow">
-          <thead class="thead-light">
+        <table className="table border shadow">
+          <thead className="thead-light">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Student Name</th>

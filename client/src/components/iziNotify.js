@@ -4,7 +4,14 @@ const iziToast = require("izitoast");
 export const notifyLoginSuccess = () =>
   iziToast.success({
     title: "",
-    message: "Login Successful.",
+    message: "Login Success.",
+    position: "topRight",
+  });
+
+export const notifyLoginFailure = () =>
+  iziToast.error({
+    title: "",
+    message: "Invalid Login Credentials.",
     position: "topRight",
   });
 

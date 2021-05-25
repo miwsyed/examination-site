@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CreateExams.css";
 import { useForm } from "react-hook-form";
-import { notifyLoginSuccess } from "./iziNotify";
+import { notifyLoginFailure, notifyLoginSuccess } from "./iziNotify";
 import { Grid, Paper } from "@material-ui/core";
 import { paperStyle } from "./extraStyling.js";
 import "./Landing.css";
@@ -9,6 +9,31 @@ import { useHistory } from "react-router";
 
 const Landing = () => {
   const history = useHistory();
+
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/adminserver", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status === 200) {
+        history.push("/");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/");
+    }
+  };
+  useEffect(() => {
+    callAdminPage();
+  }, []);
+
   const {
     register,
     formState: { errors },
@@ -18,12 +43,29 @@ const Landing = () => {
     defaultValues: {},
   });
 
-  const onSubmit = (formData) => {
-    notifyLoginSuccess();
-    setTimeout(function () {
-      history.push("/admin");
-    }, 2000);
-    console.log(formData);
+  const onSubmit = async (formData) => {
+    const { email, password } = formData;
+    const res = await fetch("/loginserver", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = res.json();
+
+    if (res.status === 400 || !data) {
+      notifyLoginFailure();
+    } else {
+      notifyLoginSuccess();
+      setTimeout(function () {
+        history.push("/");
+      }, 2000);
+    }
   };
 
   return (

@@ -5,10 +5,34 @@ import { Link, useParams } from "react-router-dom";
 
 const UpcomingExaminations = () => {
   const { id } = useParams();
+  const history = useHistory();
+
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/serverupcomingexaminations", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAdminPage();
+  }, []);
 
   const [exams, setExams] = useState([]);
-
-  const history = useHistory();
 
   useEffect(() => {
     loadExamName();

@@ -11,6 +11,31 @@ const EditQuestion = () => {
   const { id } = useParams();
   const history = useHistory();
 
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/servereditquestions/:id", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAdminPage();
+  }, []);
+
   const [questionData, setQuestionData] = useState(null);
   const [examData, setExam] = useState(null);
 

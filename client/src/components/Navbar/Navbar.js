@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { NavbarText } from "reactstrap";
 import logo from "../../assets/logo.png";
 import useStyles from "./styles";
@@ -15,9 +15,6 @@ import { notifyLogOut } from "../iziNotify";
 
 const Navbar = () => {
   const classes = useStyles();
-  const onSignOut = useCallback(() => {
-    notifyLogOut();
-  }, []);
 
   return (
     <>
@@ -47,13 +44,13 @@ const Navbar = () => {
           </NavbarText>
           <div className={classes.grow} />
           Sign Out
-          <div onClick={onSignOut} className={classes.button}>
+          <NavLink to="/logout" className={classes.button}>
             <IconButton aria-label="Show cart items" color="inherit">
               <Badge color="secondary">
                 <ExitToAppRoundedIcon />
               </Badge>
             </IconButton>
-          </div>
+          </NavLink>
         </Toolbar>
       </AppBar>
     </>

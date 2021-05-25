@@ -8,6 +8,31 @@ const ViewQuestion = () => {
 
   const history = useHistory();
 
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/serverviewquestion/:id", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAdminPage();
+  }, []);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,7 +40,9 @@ const ViewQuestion = () => {
   }, []);
 
   const loadUser = useCallback(async () => {
-    const result = await axios.get(`http://localhost:3003/questions/${id}`);
+    const result = await axios.get(
+      `http://localhost:5000/api/database/questions/${id}`
+    );
     setQuestion(result.data);
   }, [question]);
 

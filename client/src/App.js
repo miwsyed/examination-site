@@ -17,16 +17,17 @@ import UpcomingExaminations from "./components/UpcomingExaminations";
 import ViewUpcomingExams from "./components/ViewUpcomingExams";
 import EditUpcomingExams from "./components/EditUpcomingExams";
 import EditQuestion from "./components/EditQuestion";
+import Logout from "./components/Logout";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/login">
           <Landing />
         </Route>
 
-        <Route exact path="/admin">
+        <Route exact path="/">
           <Navbar />
           <AdminPage />
         </Route>
@@ -73,6 +74,10 @@ const App = () => {
         <Route exact path="/editquestion/:id">
           <Navbar />
           <EditQuestion />
+        </Route>
+        <Route exact path="/logout">
+          <Navbar />
+          <Logout />
         </Route>
 
         <Route component={NotFound} />

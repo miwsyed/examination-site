@@ -1,8 +1,35 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 const EditUpcomingExams = () => {
+  const history = useHistory();
+
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/servereditupcomingexams/:id", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAdminPage();
+  }, []);
+
   const { id } = useParams();
 
   const [questions, setQuestions] = useState([]);

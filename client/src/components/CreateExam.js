@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CreateExams.css";
 // import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -14,6 +14,31 @@ const initialState = {
 
 const SetQuestions = () => {
   const history = useHistory();
+
+  const callAdminPage = async () => {
+    try {
+      const res = await fetch("/servercreateexam", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (res.status !== 200) {
+        history.push("/login");
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (err) {
+      history.push("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAdminPage();
+  }, []);
 
   const onSubmit = async (formData) => {
     await axios.post("http://localhost:3003/exams", formData);
@@ -41,7 +66,7 @@ const SetQuestions = () => {
           <div className="card1">
             <div className="card-body1">
               <form
-                method="post"
+                method="POST"
                 name="myform"
                 onSubmit={handleSubmit(onSubmit)}
               >
