@@ -20,6 +20,7 @@ import EditQuestion from "./components/EditQuestion";
 import Logout from "./components/Logout";
 import ViewStudentExam from "./components/StudentPanel/ViewStudentExam";
 import ViewStudentProfile from "./components/StudentPanel/ViewStudentProfile";
+import GiveExam from "./components/StudentPanel/GiveExam";
 
 const App = () => {
   return (
@@ -88,6 +89,10 @@ const App = () => {
         <Route exact path="/viewstudentprofile">
           <Navbar />
           <ViewStudentProfile />
+        </Route>
+        <Route exact path="/giveexam">
+          <Navbar />
+          <GiveExam />
         </Route>
         <Route component={NotFound} />
       </Switch>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Link, useParams } from "react-router-dom";
 
@@ -43,12 +43,6 @@ const UpcomingExaminations = () => {
     setExams(Exam.data);
   };
 
-  const goView = () => {
-    history.push(`/viewupcomingexams/${id}`);
-  };
-  const goEdit = () => {
-    history.push(`/editupcomingexams/${id}`);
-  };
   const deleteUser = async (id) => {
     await axios.delete(`http://localhost:3003/users/${id}`);
     loadExamName();

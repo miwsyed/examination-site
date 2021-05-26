@@ -22,7 +22,7 @@
         "catchPhrase": "Face to face bifurcated interface",
         "bs": "e-enable strategic applications"
       },
-      "password": "chulli221"
+      "password": "chulli222"
     },
     {
       "id": 4,
@@ -161,6 +161,12 @@
       "email": "studenta@gmail.com",
       "password": "studenta",
       "id": 13
+    },
+    {
+      "name": "Karan singh tanwar",
+      "email": "karan@gmail.com",
+      "password": "karan",
+      "id": 14
     }
   ],
   "Questions": [
@@ -180,7 +186,7 @@
       "optionB": "nottheash",
       "optionC": "kasjkdaku",
       "optionD": "bbaslaaas",
-      "id": 3
+      "id": 2
     },
     {
       "question": "Who sold you kidneys?",
@@ -189,7 +195,7 @@
       "optionC": "theydkwho",
       "optionD": "ikwho",
       "answerOption": "optionA",
-      "id": 4
+      "id": 3
     },
     {
       "question": "Who was the first person to land on moon?",
@@ -198,7 +204,7 @@
       "optionC": "Neil Arm Strong",
       "optionD": "Babu Bhai",
       "answerOption": "optionC",
-      "id": 6
+      "id": 4
     },
     {
       "question": "Who is your favourite Rapper?",
@@ -207,7 +213,7 @@
       "optionC": "Eazy",
       "optionD": "50 Cent",
       "answerOption": "optionA",
-      "id": 7
+      "id": 5
     },
     {
       "question": "What is your Pet's name?",
@@ -216,7 +222,7 @@
       "optionC": "Monty",
       "optionD": "Miny",
       "answerOption": "optionA",
-      "id": 8
+      "id": 6
     },
     {
       "question": "Why do you think you are a good fit ?",
@@ -225,7 +231,7 @@
       "optionC": "I just wanna make a lot of money",
       "optionD": "Don't know where we at",
       "answerOption": "optionA",
-      "id": 9
+      "id": 7
     },
     {
       "question": "How many bones are there in human body?",
@@ -234,7 +240,7 @@
       "optionC": "0207",
       "optionD": "0208",
       "answerOption": "optionA",
-      "id": 10
+      "id": 8
     },
     {
       "question": "Laraib ki bv karti hai Mustafa se pyaar",
@@ -243,21 +249,27 @@
       "optionB": "false",
       "optionC": "strong true",
       "optionD": "strong false",
-      "id": 11
+      "id": 9
     },
     {
-      "name": "TeriBv",
-      "email": "terbv@gmail.com",
-      "password": "termeri",
-      "id": 12
+      "question": "What do you want?",
+      "optionA": "your wife",
+      "answerOption": "optionA",
+      "optionB": "your wife's sister",
+      "optionC": "your wife's mother",
+      "optionD": "your wife's lady friend",
+      "id": 10
     }
   ],
   "exams": [
     {
       "examName": "CA1 INT305",
-      "examTime": "14:03",
-      "examDate": "2023-03-03",
+      "examTime": "08:00",
+      "examDate": "2021-05-29",
       "id": 1
     }
+  ],
+  "answers": [
+    {}
   ]
 }
