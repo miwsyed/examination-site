@@ -47,7 +47,7 @@ const SetQuestions = () => {
       history.push("/setquestions");
     }, 2000);
 
-    // do whatever you need here, at this stage the form is validated
+    // do whatever you need here, at this stage the form is validated yeah boii
   };
 
   const {

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import { notifyLogOut } from "./iziNotify";
-
+//yeah boii
 const Logout = () => {
   notifyLogOut();
   const history = useHistory();

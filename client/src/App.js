@@ -94,6 +94,7 @@ const App = () => {
           <Navbar />
           <GiveExam />
         </Route>
+
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

@@ -11,7 +11,7 @@ const defaultFormState = {
   answerOption: "",
 };
 
-// 1) initialFormState prop -> if not passed, use defaultFormState
+// 1) initialFormState prop -> if not passed, use defaultFormState yeah boiii
 // 2) onSubmit prop -> will be defined in the parent component
 const EditQuestionForm = ({
   initialFormState = defaultFormState,

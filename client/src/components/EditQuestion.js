@@ -5,8 +5,6 @@ import "../components/SetQuestions.css";
 import { notifyUpdatedQuestion } from "./iziNotify";
 import EditQuestionForm from "./EditQuestionForm";
 
-// ================COMPONENT WITH DATA BELOW=========================
-
 const EditQuestion = () => {
   const { id } = useParams();
   const history = useHistory();
