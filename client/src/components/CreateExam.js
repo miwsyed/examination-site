@@ -41,7 +41,7 @@ const SetQuestions = () => {
   }, []);
 
   const onSubmit = async (formData) => {
-    await axios.post("http://localhost:3003/exams", formData);
+    await axios.post("servercreateexam", formData);
     notify();
     setTimeout(function () {
       history.push("/setquestions");

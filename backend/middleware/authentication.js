@@ -1,6 +1,7 @@
-import jwt from "jsonwebtoken";
-import User from "../model/userSchema.js";
-import dotenv from "dotenv";
+const jwt = require("jsonwebtoken");
+const User = require("../model/userSchema");
+
+const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
 const Authenticate = async (req, res, next) => {
@@ -17,7 +18,6 @@ const Authenticate = async (req, res, next) => {
       return res.status(401).send("Unauthorized: No token Provided");
       // throw new Error("User not found");
     }
-    console.log(rootUser);
 
     req.token = token;
     req.rootUser = rootUser;
@@ -30,4 +30,4 @@ const Authenticate = async (req, res, next) => {
   }
 };
 
-export default Authenticate;
+module.exports = Authenticate;

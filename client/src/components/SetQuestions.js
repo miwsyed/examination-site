@@ -60,7 +60,7 @@ const SetQuestions = () => {
   });
 
   const onSubmit = async (formData) => {
-    await axios.post("http://localhost:3003/questions", formData);
+    await axios.post("/serversetquestions", formData);
     notifyAddedQuestion();
     setTimeout(function () {
       window.location.reload(false);

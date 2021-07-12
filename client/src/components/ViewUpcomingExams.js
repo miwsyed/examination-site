@@ -40,13 +40,13 @@ const ViewUpcomingExams = () => {
   }, []);
 
   const loadExam = useCallback(async () => {
-    const result = await axios.get(`http://localhost:3003/exams/${id}`);
-    const question = await axios.get(`http://localhost:3003/questions`);
+    const result = await axios.get(`/serverupcomingexaminations`);
+    const question = await axios.get(`/serversetquestions`);
     setQuestions(question.data);
 
     window.totalQuestion = Object.keys(question.data).length;
 
-    setExam(result.data);
+    setExam(result.data[0]);
   }, [exam]);
 
   return (

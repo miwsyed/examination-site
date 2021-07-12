@@ -6,6 +6,7 @@ import { Grid, Paper } from "@material-ui/core";
 import { paperStyle } from "./extraStyling.js";
 import "./Landing.css";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 const Landing = () => {
   const history = useHistory();

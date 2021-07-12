@@ -62,7 +62,7 @@ const App = () => {
           <Navbar />
           <UpcomingExaminations />
         </Route>
-        <Route exact path="/viewupcomingexams/:id">
+        <Route exact path="/viewupcomingexams">
           <Navbar />
           <ViewUpcomingExams />
         </Route>

@@ -31,7 +31,8 @@ const ViewEditStudents = () => {
     callAdminPage();
 
     const loadUsers = async () => {
-      const result = await axios.get("http://localhost:3003/users");
+      const result = await axios.get("/serverviewstudents");
+      console.log(result);
       setUser(result.data);
     };
 

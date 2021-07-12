@@ -46,7 +46,6 @@ const AddUser = () => {
   const onSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      await axios.post("http://localhost:3003/users", user);
       await axios.post("/register", user);
 
       notifyAdded();

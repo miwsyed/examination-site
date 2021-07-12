@@ -39,7 +39,7 @@ const UpcomingExaminations = () => {
   }, []);
 
   const loadExamName = async () => {
-    const Exam = await axios.get(`http://localhost:3003/exams`);
+    const Exam = await axios.get(`/serverupcomingexaminations`);
     setExams(Exam.data);
   };
 
@@ -72,7 +72,7 @@ const UpcomingExaminations = () => {
                 <td>
                   <Link
                     className="btn btn-primary mr-2"
-                    to={`/viewupcomingexams/${user.id}`}
+                    to={`/viewupcomingexams`}
                   >
                     View
                   </Link>
